@@ -1,43 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import Svg, { Rect, Ellipse } from "react-native-svg"
-import * as Animatable from 'react-native-animatable';
-import {useRef} from "react";
+import Dados from "./Dados";
+import {Provider} from 'react-redux';
+import {store} from '../../redux/store';
+import {useAppDispatch} from '../../redux/hooks'
+import Botones from "./Botones";
+import Dos from "./Dados/Dos";
 
-const Main = (props) => {
-
-    let state = true
-
-    const viewRef = useRef();
-
-    function animar() {
-        state = false
-        viewRef.current.bounceInDown()
-    }
+function Main() {
+let value = true;
 
 
+
+function change () {
+    value = !value
+}
 
     return (
-    <View style={styles.container}>
-        <Button title={'Animar'} onPress={animar} />
+        <Provider store={store}>
+            <View style={styles.container}>
+                <Botones/>
 
-        <Animatable.View   display={state ? 'flex' : 'none'} ref={viewRef}>
-
-            <Svg
-                width={100}
-                height={100}
-                viewBox="0 0 1000 1000"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                {...props}
-            >
-                <Rect width={1000} height={1000} rx={72} fill="#fff" />
-                <Ellipse cx={745} cy={748.5} rx={81} ry={77.5} fill="#000" />
-                <Ellipse cx={255} cy={251.5} rx={81} ry={77.5} fill="#000" />
-            </Svg>
-        </Animatable.View>
-        <StatusBar style="auto" />
-    </View>
+                {/*<Dados name={value} />*/}
+                <Dos />
+                <StatusBar style="auto" />
+            </View>
+        </Provider>
     )
 }
 
