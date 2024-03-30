@@ -1,6 +1,8 @@
-import {Button, Text, View} from "react-native";
+import {TouchableOpacity, Text, StyleSheet } from "react-native";
 import {useAppDispatch} from '../../redux/hooks'
-import {decrement, decrementByAmount, increment, incrementByAmount, reset} from "../../feacture/conteo/contar";
+import {
+    numeroAleatorio2al12,
+} from "../../feacture/conteo/contar";
 
 
 
@@ -9,16 +11,23 @@ function Botones() {
     const dispatch = useAppDispatch()
 
     return (
-
-        <View style={{display: 'flex', gap: 10 }}>
-            <Button title={'Incrementar'} onPress={()=> dispatch(increment())}/>
-            <Button title={'Decrementar'} onPress={()=> dispatch(decrement())}/>
-            <Button title={'incrementar 5'} onPress={()=> dispatch(incrementByAmount(5))}/>
-            <Button title={'decrementar 5'} onPress={()=> dispatch(decrementByAmount(5))}/>
-            <Button title={'borrar'} onPress={()=> dispatch(reset())}/>
-        </View>
+    <TouchableOpacity style={styles.button} onPress={()=> dispatch(numeroAleatorio2al12())}>
+        <Text style={styles.buttonText}>Lanzar</Text>
+    </TouchableOpacity>
     )
 }
 
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: 'black',
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+    },
+});
 
 export  default Botones

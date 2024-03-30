@@ -26,15 +26,27 @@ const counterSlice = createSlice({
         },
         reset: (state) => {
             state.value = 0;
+        },
+        numeroAleatorio2al12: (state) => {
+            state.value = numeroAleatorioEntreDosYDoce();
         }
     }
 })
 
+
+function numeroAleatorioEntreDosYDoce(): number {
+
+    const numeroAleatorio = Math.random();
+    const numeroEscalado = Math.floor(numeroAleatorio * 11) + 2;
+
+    return numeroEscalado;
+}
 export const {
     increment,
     decrement,
     incrementByAmount,
     decrementByAmount,
-    reset
+    reset,
+    numeroAleatorio2al12
 } = counterSlice.actions
 export default counterSlice.reducer
