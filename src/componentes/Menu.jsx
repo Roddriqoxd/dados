@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useAppDispatch} from "../../redux/hooks";
 import {reset} from "../../feacture/conteo/contar";
-import { Button } from 'react-native-paper';
-
+import {Button} from 'react-native-paper';
+import {editEnd, menuOpenTodise} from "../../feacture/conteo/eventos";
 
 const Menu = ({ navigation }) => {
 
@@ -11,12 +11,17 @@ const Menu = ({ navigation }) => {
 
     function todiseEntrar() {
         dispatch(reset());
+        dispatch(menuOpenTodise())
+        dispatch(editEnd())
         navigation.navigate('Todise');
     }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Juegos de Chichería</Text>
+            <Text style={styles.title}
+
+
+            >Juegos de Chichería</Text>
             <View style={styles.botones}>
                 <Button
                     style={styles.boton}
@@ -42,7 +47,7 @@ const Menu = ({ navigation }) => {
                     Tortugas
                 </Button>
             </View>
-            <Text>Version 1</Text>
+            <Text>Version Beta 1.2</Text>
         </View>
     );
 };
@@ -53,11 +58,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-around',
         alignItems: 'center',
+        backgroundColor: '#e3e3e3'
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
+        color: 'black',
     },
     botones: {
 

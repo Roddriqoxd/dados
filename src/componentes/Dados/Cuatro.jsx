@@ -21,8 +21,8 @@ function Cuatro() {
         <Animatable.View ref={viewRef} display={none} style={styles.container}>
 
             <Svg
-                width={100}
-                height={100}
+                width={120}
+                height={120}
                 viewBox="0 0 1000 1000"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +35,8 @@ function Cuatro() {
             </Svg>
 
             <Svg
-                width={100}
-                height={100}
+                width={120}
+                height={120}
                 viewBox="0 0 1000 1000"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
